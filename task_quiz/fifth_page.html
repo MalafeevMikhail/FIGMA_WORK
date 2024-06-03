@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base_style.css">
+    <link rel="stylesheet" href="./css/fifth_page_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./img/1.png" alt="Иконка страницы" class="header__logo-company">
+            <p class="header__text">Текст</p>
+        </header>
+        <main>
+            <div class="start-window-test">
+                <h1 class="start-window-test__name-test">Тестирование</h1>
+                <p class="start-window-test__main-text">Осталось пройти небольшой тест,  который покажет, как хорошо ты усвоил материал</p>
+                <div class="start-window-test__prev-inform-block">
+                    <ul>
+                        <li class="start-window-test__prev-inform-li">Для успешного прохождения нужно правильно ответить минимум на 7 вопросов из 10</li>
+                        <li class="start-window-test__prev-inform-li">На прохождение теста дается 3 попытки</li>
+                    </ul>
+                </div>
+                <button class="start-window-test__start-test-btn" onclick="load_test_for_user()">
+                    Начать
+                    <img src="./img/arrow_second.svg" alt="Стрелка начала">
+                </button>
+            </div>
+            <div class="main-block-questions block__not-view">
+                <h1 class="main-block-questions__title">Тестирование</h1>
+                <h2 class="main-block-questions__quest-name" id="quest_name">Вопрос?</h2>
+                <div class="main-block-question__block-content">
+                   
+                </div>
+                <button class="main-block-question__accept-user-btn" onclick="check_user_answer()">Принять</button>
+            </div>
+            
+            <div class="result-test-block block__not-view">
+                <h1 class="result-test-block__title">Результаты тестирования</h1>
+                <p class="result-test-block__data-user">Константин Константинопольский     20.01.2020</p>
+                
+                <div class="result-test-block__informations">
+                    <div class="result-test-block__result-user">
+                        <h3 class="result-test-block__number-test">Результаты 1-й  попытки</h3>
+                        <div class="result-test-block__statistics-result">
+                             <h2 class="result-test-block__count-true-answer-from-all">6/10</h2>
+                             <h2 class="result-test-block__percent-score">60%</h2>
+                        </div>
+                     </div>
+     
+                     <div class="result-test-block__best-result-user-block block__not-view ">
+                         <h3 class="result-test-block__title-best-result">Лучший результат</h3>
+                         <h2 class="result-test-block__score-best-result">60%</h2>
+                     </div>
+     
+                </div>
+                <p class="result-test-block__verdict-for-user">Не очень хороший результат, рекомендуем изучить курс еще раз.</p>
+
+                <div class="result-test-block__btn-block  block__not-view"  onclick="load_start_window()">
+                    Повторить тест 
+                    <img src="./img/Refresh.png" alt="Картинка перезагрузки">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="./js/fifth_page_script.js"></script>
+</body>
+</html>
+
+
