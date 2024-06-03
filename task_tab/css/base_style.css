@@ -52,6 +52,7 @@ header::after{
     text-align: center;
     height: 52px;
     padding: 21px;
+    margin-top: 50px;
 }
 .button-continue__button
 {
