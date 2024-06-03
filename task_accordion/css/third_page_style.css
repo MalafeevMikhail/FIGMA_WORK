@@ -1,0 +1,51 @@
+
+.main-content__ul-li-item
+{
+    list-style-type: none;   
+    font-size:14px;
+    font-weight: 400px;
+    line-height: 21px;
+    font-family: "Golos Text", sans-serif;
+    margin-top: 10px;
+    padding-left: 10px;
+
+}
+.ul_li_item::before{
+    color: green;
+    content: "-";
+    padding-right: 10px;
+}
+.main-content
+{
+    display: flex;
+    flex-direction: column;
+}
+.main-content__name-tab
+{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    border-bottom: 1px solid #E9262D;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+}
+.main-content__name-tab:first-child{
+    border-top: 1px solid #E9262D;
+    
+}
+.main-content__tab-content
+{
+    display: none;
+    padding-bottom: 20px;
+}
+.main-content__tab-item_active{
+    display: block;
+}
+.main-content__tab-item_open{
+    border-left:4px solid #E9262D ;
+}
+

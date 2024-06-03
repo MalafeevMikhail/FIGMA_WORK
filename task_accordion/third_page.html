@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/base_style.css">
+    <link rel="stylesheet" href="./css/third_page_style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="./img/1.png" alt="Иконка страницы" class="header__logo-company">
+            <p class="header__text">Текст</p>
+        </header>
+        <main>
+            <h1>Аккардион</h1>
+            <div class="main-content">
+                <div class="main-content__tab-item " data-id="tab_1">
+                    <div class="main-content__name-tab"  onclick="open_items(1)">
+                        Таб 1
+                        <img src="./img/btn_down_click.svg" alt="Иконка открывания списка" class="main-content__tab-icon" data-id="icon_1">
+                    </div>
+                    <div class="main-content__tab-content" data-id="tab_content_1">
+                        <ul>
+                            <li class="main-content__ul-li-item">Элемент 1</li>
+                            <li class="main-content__ul-li-item">Элемент 2</li>
+                            <li class="main-content__ul-li-item">Элемент 3</li>
+                            <li class="main-content__ul-li-item">Элемент 4</li>
+                            <li class="main-content__ul-li-item">Элемент 5</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-content__tab-item " data-id="tab_2">
+                    <div class="main-content__name-tab"  onclick="open_items(2)">
+                        Таб 2
+                        <img src="./img/btn_down_click.svg" alt="Иконка открывания списка" class="main-content__tab-icon" data-id="icon_2">
+                    </div>
+                    <div class="main-content__tab-content" data-id="tab_content_2">
+                        <ul>
+                            <li class="main-content__ul-li-item">Элемент 1</li>
+                            <li class="main-content__ul-li-item">Элемент 2</li>
+                            <li class="main-content__ul-li-item">Элемент 3</li>
+                            <li class="main-content__ul-li-item">Элемент 4</li>
+                            <li class="main-content__ul-li-item">Элемент 5</li>
+                        </ul>
+                    </div>
+                </div>  
+                <div class="main-content__tab-item  " data-id="tab_3">
+                    <div class="main-content__name-tab"  onclick="open_items(3)">
+                        Таб 3
+                        <img src="./img/btn_down_click.svg" alt="Иконка открывания списка" class="main-content__tab-icon" data-id="icon_3">
+                    </div>
+                    <div class="main-content__tab-content" data-id="tab_content_3">
+                        <ul>
+                            <li class="main-content__ul-li-item">Элемент 1</li>
+                            <li class="main-content__ul-li-item">Элемент 2</li>
+                            <li class="main-content__ul-li-item">Элемент 3</li>
+                            <li class="main-content__ul-li-item">Элемент 4</li>
+                            <li class="main-content__ul-li-item">Элемент 5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="button-continue">
+            <button class="button-continue__button button-continue__button-not-active">Продолжить</button>
+        </div>
+    </div>  
+
+    <script src="./js/third_page_script.js"> </script>
+</body>
+</html>
