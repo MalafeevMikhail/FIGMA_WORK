@@ -17,7 +17,13 @@ main h1{
 .main-content
 {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap:40px;
+    align-items: center;
+}
+.main-content__top-content{
+    display: flex;
+    gap:20px;
 }
 .main-content__menu-tab
 {

@@ -1,33 +1,50 @@
-
-var count_tab = 4
-// Код для проверки нажатия
-var check_click_all_tav = Array(count_tab).fill(0)
-check_click_all_tav[0] = 1
-function check_click_tabs(){
-    for (let index = 0; index < check_click_all_tav.length; index++) {
-        if(check_click_all_tav[index]==0)
-            return false
+var countContentTab = document.querySelectorAll('.main-content');
+var checkClickTabInAllContent = Array()
+for (let index = 0; index < countContentTab.length; index++) {
+    CountTabItemInCurrentContent = countContentTab[index].querySelectorAll('.menu-tab__menu-item').length
+    var tmp_arr = Array() 
+    for (let j_index = 0; j_index < CountTabItemInCurrentContent; j_index++) {
+        tmp_arr.push(false)
     }
-    return true
+    tmp_arr[0] = true
+    checkClickTabInAllContent.push(tmp_arr)
 }
-function open_new_tab(index_tab)
+function open_new_tab(indexTabContent,indexTab)
 {
-    check_click_all_tav[index_tab-1]=1
-    if(check_click_tabs()){
-        document.querySelector('.button-continue__button').classList.remove('button-continue__button-not-active')
+    /*
+        indexTabContent - id отдельно взятого блока TAB
+        indexTab - id само TabMenu в каждом блоке
+    */
+    allElementsContentBlock = document.querySelectorAll('.main-content')[indexTabContent]; // получение блоков
+    allMenuTab = allElementsContentBlock.querySelectorAll('.menu-tab__menu-item') // получение меню табов
+    allTabItem = allElementsContentBlock.querySelectorAll('.data-tab__tab-item') // получение всего контента табов
+
+    checkClickTabInAllContent[indexTabContent][indexTab]=true
+    
+    if(!checkClickTabInAllContent[indexTabContent].includes(false)){
+        allElementsContentBlock.querySelector('.button-continue__button').classList.remove('button-continue__button-not-active')
     }
-    for (let index = 1; index <= count_tab; index++) {
-        if(index == index_tab){
-            //document.getElementById('tab_'+index).setAttribute('style','display:block')
-            document.querySelector('.data-tab__tab-item[data-id=tab_'+index+']').classList.remove('data-tab__tab-item_not_visible');
-            document.querySelector('.menu-tab__menu-item[data-id=menu-tab__item_'+index+']').classList.add('menu-tab__menu-item_select_now')
+
+    for (let index = 0; index < allMenuTab.length; index++) {
+        if(index == indexTab){
+            allTabItem[index].classList.remove('data-tab__tab-item_not_visible')
+            allMenuTab[index].classList.add('menu-tab__menu-item_select_now')
         }
         else
         {
-            document.querySelector('.data-tab__tab-item[data-id=tab_'+index+']').classList.add('data-tab__tab-item_not_visible')
-            if(document.querySelector('.menu-tab__menu-item[data-id=menu-tab__item_'+index+']').classList.contains('menu-tab__menu-item_select_now'))
-                document.querySelector('.menu-tab__menu-item[data-id=menu-tab__item_'+index+']').classList.remove('menu-tab__menu-item_select_now')
+            allTabItem[index].classList.add('data-tab__tab-item_not_visible')
+            if(allMenuTab[index].classList.contains('menu-tab__menu-item_select_now'))
+                allMenuTab[index].classList.remove('menu-tab__menu-item_select_now')
         }
         
     }
 }
+document.addEventListener('DOMContentLoaded',function(){
+    allElementsTabContent = document.querySelectorAll('.main-content')   
+    for (let index = 0; index < allElementsTabContent.length; index++) {
+        allElementsTabInContent = allElementsTabContent[index].querySelectorAll('.menu-tab__menu-item');
+        for (let j_index = 0; j_index < allElementsTabInContent.length; j_index++) {
+            allElementsTabInContent[j_index].addEventListener('click',()=>open_new_tab(index,j_index))
+        }
+    }
+})
