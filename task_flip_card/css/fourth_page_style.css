@@ -1,11 +1,17 @@
 .main-content
 {
     display: flex;
-    justify-content: space-between;
     width: 940px;
     margin: 0 auto;
     perspective: 600px;
     transition:  transform .4s;
+    flex-direction: column;
+    gap:40px;
+    align-items: center;
+}
+.main-content__top-content{
+    display: flex;
+    gap:20px;
 }
 .main-content__card
 {

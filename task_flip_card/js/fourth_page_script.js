@@ -1,33 +1,37 @@
-count_card = 3
-my_struct = Array(count_card).fill(0)
+var allElementsCardContent = document.querySelectorAll('.main-content') 
 
-function check_all_view_card()
+
+var CheckViewAllCard = Array();
+
+for (let index = 0; index < allElementsCardContent.length; index++) {
+    CountCardCardInCurrentContent = allElementsCardContent[index].querySelectorAll('.main-content__card').length
+    CheckViewAllCard.push(Array(CountCardCardInCurrentContent).fill(false))
+    CheckViewAllCard[index][0] = true
+}
+
+function flip_open(indexFlipCardContent,indexFlipCardItem)
 {
-    for (let index = 0; index < my_struct.length; index++) {
-        if(my_struct[index]==0)
-            return false        
+    CheckViewAllCard[indexFlipCardContent][indexFlipCardItem] = true
+    if(!CheckViewAllCard[indexFlipCardContent].includes(false))
+         allElementsCardContent[indexFlipCardContent].querySelector('.button-continue__button').classList.remove('button-continue__button-not-active')
+        
+    allElementsCardContent[indexFlipCardContent].querySelectorAll('.main-content__card_front_content')[indexFlipCardItem].style.transform = "rotateY(-180deg)"
+    allElementsCardContent[indexFlipCardContent].querySelectorAll('.main-content__card-back-content')[indexFlipCardItem].style.transform = "rotateY(0deg)"
+}
+
+function flip_close(indexFlipCardContent,indexFlipCardItem)
+{
+    allElementsCardContent[indexFlipCardContent].querySelectorAll('.main-content__card_front_content')[indexFlipCardItem].style.transform = "rotateY(0deg)"
+    allElementsCardContent[indexFlipCardContent].querySelectorAll('.main-content__card-back-content')[indexFlipCardItem].style.transform = "rotateY(180deg)"
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+    allElementsCardContent = document.querySelectorAll('.main-content') 
+    for (let index = 0; index < allElementsCardContent.length; index++) {
+        allElementCardInCurrentMenu = allElementsCardContent[index].querySelectorAll('.main-content__card')
+        for (let j_index = 0; j_index < allElementCardInCurrentMenu.length; j_index++) {
+            allElementCardInCurrentMenu[j_index].addEventListener('mouseover',()=>flip_open(index,j_index))
+            allElementCardInCurrentMenu[j_index].addEventListener('mouseout',()=>flip_close(index,j_index)) 
+        }
     }
-    return true
-}
-
-function flip_open(sender,index)
-{
-    my_struct[index-1] = 1
-    if(check_all_view_card()){
-        document.querySelector('.button-continue__button').classList.remove('button-continue__button-not-active')
-    }
-
-    console.log(index);
-
-    sender.querySelector('.main-content__card_front_content').style.transform = "rotateY(-180deg)"
-    sender.querySelector('.main-content__card-back-content').style.transform = "rotateY(0deg)"
-
-}
-
-function flip_close(sender,index)
-{
-    my_struct[index-1] = 1
-    sender.querySelector('.main-content__card_front_content').style.transform = "rotateY(0deg)"
-    sender.querySelector('.main-content__card-back-content').style.transform = "rotateY(180deg)"
-
-}
+})
