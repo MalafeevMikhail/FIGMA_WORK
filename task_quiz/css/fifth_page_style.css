@@ -138,6 +138,12 @@
     line-height: 40px;
 }
 
+.result-test-block__statistics-result_good-result{
+    
+    color: #73BE43;
+    
+}
+
 .result-test-block__verdict-for-user{
     margin: 30px 0px;
     font-size: 18px;

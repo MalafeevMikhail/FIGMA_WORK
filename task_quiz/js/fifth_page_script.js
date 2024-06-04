@@ -33,13 +33,8 @@ list_question_for_user = [
 function check_user_answer()
 {
     let user_answer = document.querySelector('input[name="answer_question_user"]:checked')?.value;
-    console.log("польователь выбрал - ", user_answer)
     if(user_answer == list_true_question_for_user[index_question]){
-        console.log("пользователь верно ответил!");
         cur_score_user+=1;
-    }
-    else{
-        console.log("невереный ответ!");
     }
     index_question+=1
     if (index_question == count_question){
@@ -56,11 +51,11 @@ function check_user_answer()
         statics_block.innerHTML='<h2 class="result-test-block__count-true-answer-from-all">'+cur_score_user+'/'+count_question+'</h2><h2 class="result-test-block__percent-score">'+((100/count_question)*cur_score_user)+'%</h2>'
         
         if((100/count_question)*cur_score_user<80){
-            statics_block.setAttribute('style','color:#E9262D')
+            statics_block.classList.remove('result-test-block__statistics-result_good-result')
             document.querySelector('.result-test-block__verdict-for-user').textContent = "Не очень хороший результат, рекомендуем изучить курс еще раз."
             document.querySelector('.result-test-block__btn-block').classList.remove('block__not-view')
         }else{
-            statics_block.setAttribute('style','color:#73BE43')
+            statics_block.classList.add("result-test-block__statistics-result_good-result")
             document.querySelector('.result-test-block__btn-block').classList.add('block__not-view')
             document.querySelector('.result-test-block__verdict-for-user').textContent = "Текст-комментарий для положительного результата"
         }
@@ -81,7 +76,6 @@ function check_user_answer()
         cur_score_user = 0 ;
         document.querySelector('.result-test-block').classList.remove('block__not-view');
         
-        console.log("результат - ", cur_score_user)
     }else{
         load_test_for_user()
     }
