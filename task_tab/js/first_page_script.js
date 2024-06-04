@@ -1,7 +1,7 @@
-var countContentTab = document.querySelectorAll('.main-content');
+var ContentTabs = document.querySelectorAll('.main-content');
 var checkClickTabInAllContent = Array()
-for (let index = 0; index < countContentTab.length; index++) {
-    CountTabItemInCurrentContent = countContentTab[index].querySelectorAll('.menu-tab__menu-item').length
+for (let index = 0; index < ContentTabs.length; index++) {
+    CountTabItemInCurrentContent = ContentTabs[index].querySelectorAll('.menu-tab__menu-item').length
     var tmp_arr = Array() 
     for (let j_index = 0; j_index < CountTabItemInCurrentContent; j_index++) {
         tmp_arr.push(false)
