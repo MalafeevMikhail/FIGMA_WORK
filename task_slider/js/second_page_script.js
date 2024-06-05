@@ -4,14 +4,14 @@ var NumberSlideInAllSlider = Array(ContentSlider.length).fill(0)
 var CheckViewAllSlideInSliders = Array()
 
 for (let index = 0; index < ContentSlider.length; index++) {
-    CountSlideInCurrentSliders = ContentSlider[index].querySelectorAll('.block-slider__item').length
+    let CountSlideInCurrentSliders = ContentSlider[index].querySelectorAll('.block-slider__item').length
     CheckViewAllSlideInSliders.push(Array(CountSlideInCurrentSliders).fill(false))
     CheckViewAllSlideInSliders[index][0] = true
 }
 
 function make_circles(indexSliderCurrent){
-    block_dots = ContentSlider[indexSliderCurrent].querySelector('.block-slider__dots')
-    LenghtSlideInCurrentSlider =  ContentSlider[indexSliderCurrent].querySelectorAll('.block-slider__item').length;
+    let block_dots = ContentSlider[indexSliderCurrent].querySelector('.block-slider__dots')
+    let LenghtSlideInCurrentSlider =  ContentSlider[indexSliderCurrent].querySelectorAll('.block-slider__item').length;
     block_dots.innerHTML = "";
     for (let index = 0; index < LenghtSlideInCurrentSlider; index++) {
         dot = document.createElement('span');
@@ -29,8 +29,8 @@ function open_new_slide(indexSliderCurrent,doName,numberOpenSlide=null){
         doName - действие, которое требуется сделать(предыдущий,следующий, выьранный слайд)
      */
   
-    LenghtSlideInCurrentSlider =  ContentSlider[indexSliderCurrent].querySelectorAll('.block-slider__item').length;
-    NumberOldSlide = NumberSlideInAllSlider[indexSliderCurrent]
+    let LenghtSlideInCurrentSlider =  ContentSlider[indexSliderCurrent].querySelectorAll('.block-slider__item').length;
+    let NumberOldSlide = NumberSlideInAllSlider[indexSliderCurrent]
     if(doName=='prev_slide'){
         NumberSlideInAllSlider[indexSliderCurrent]-=1
         if(NumberSlideInAllSlider[indexSliderCurrent]<0)
@@ -53,7 +53,7 @@ function open_new_slide(indexSliderCurrent,doName,numberOpenSlide=null){
     make_circles(indexSliderCurrent)
 }
 document.addEventListener('DOMContentLoaded',function(){
-    ContentSlider = document.querySelectorAll('.block-slider')
+    let ContentSlider = document.querySelectorAll('.block-slider')
     for (let index = 0; index < ContentSlider.length; index++) {
         ContentSlider[index].querySelector('.block-slider__prev-button').addEventListener('click', ()=>open_new_slide(index,'prev_slide'))
         ContentSlider[index].querySelector('.block-slider__next-button').addEventListener('click', ()=>open_new_slide(index,'next_slide'))
