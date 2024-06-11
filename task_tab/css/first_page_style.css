@@ -1,18 +1,5 @@
-/* Main */
-main
-{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    gap:34px;
-    width: 940px;
-}
-main h1{
-    font-weight: 700px;
-    font-size: 25px;
-    line-height: 24px;
-    font-family: "Golos Text", sans-serif;
-}
+
+
 
 .main-content
 {
@@ -105,4 +92,6 @@ ul{
 .data-tab__tab-item_not_visible{
     display: none;
 }
+
+
 

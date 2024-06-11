@@ -1,51 +1,54 @@
-var ContentTabs = document.querySelectorAll('.main-content');
-var checkClickTabInAllContent = []
-for (let index = 0; index < ContentTabs.length; index++) {
-    let CountTabItemInCurrentContent = ContentTabs[index].querySelectorAll('.menu-tab__menu-item').length
-    var tmp_arr = [] 
-    for (let j_index = 0; j_index < CountTabItemInCurrentContent; j_index++) {
-        tmp_arr.push(false)
-    }
-    tmp_arr[0] = true
-    checkClickTabInAllContent.push(tmp_arr)
-}
 
-document.addEventListener('DOMContentLoaded',function(){
-    function open_new_tab(indexTabContent,indexTab)
+
+
+function start_script_tab(){
+    var allTabElement = document.querySelectorAll('.main-content'); // получаю все Табы
+    var checkClickTabInAllContent = [] // Массив для отслеживания просмотров всех вкладок
+
+    function open_new_tab(indexTabElement,indexTabMenu)
     {
         /*
-            indexTabContent - id отдельно взятого блока TAB
-            indexTab - id само TabMenu в каждом блоке
+            indexTabElement - id отдельно взятого блока TAB
+            indexTabMenu - id само TabMenu в каждом блоке
         */
-        let allElementsContentBlock = document.querySelectorAll('.main-content')[indexTabContent]; // получение блоков
-        let allMenuTab = allElementsContentBlock.querySelectorAll('.menu-tab__menu-item') // получение меню табов
-        let allTabItem = allElementsContentBlock.querySelectorAll('.data-tab__tab-item') // получение всего контента табов
+        let currentTab = allTabElement[indexTabElement]; // получение конкретного таб-элемента
+        let allMenuTabInCurrentTab = currentTab.querySelectorAll('.menu-tab__menu-item') // получение меню табов для текущего таб-элемента
+        let allTabContentInCurrentTab = currentTab.querySelectorAll('.data-tab__tab-item') // получение всех контентов для каждого таба в текущем таб-элементе
 
-        checkClickTabInAllContent[indexTabContent][indexTab]=true
+        checkClickTabInAllContent[indexTabElement][indexTabMenu]=true // помечаю, что посмотрел вкладку в этом таб-элемента и какую именно по счету вкладку
         
-        if(!checkClickTabInAllContent[indexTabContent].includes(false)){
-            allElementsContentBlock.querySelector('.button-continue__button').classList.remove('button-continue__button-not-active')
+        if(!checkClickTabInAllContent[indexTabElement].includes(false)){ // проверяю для конкретного таб-элемента, не все ли вклади уже были просмотрены
+            currentTab.querySelector('.button-continue__button').classList.remove('button-continue__button-not-active') // разблокировка кнопки
         }
 
-        for (let index = 0; index < allMenuTab.length; index++) {
-            if(index == indexTab){
-                allTabItem[index].classList.remove('data-tab__tab-item_not_visible')
-                allMenuTab[index].classList.add('menu-tab__menu-item_select_now')
+        for (let index = 0; index < allMenuTabInCurrentTab.length; index++) {
+            if(index == indexTabMenu){
+                allTabContentInCurrentTab[index].classList.remove('data-tab__tab-item_not_visible')
+                allMenuTabInCurrentTab[index].classList.add('menu-tab__menu-item_select_now')
             }
             else
             {
-                allTabItem[index].classList.add('data-tab__tab-item_not_visible')
-                if(allMenuTab[index].classList.contains('menu-tab__menu-item_select_now'))
-                    allMenuTab[index].classList.remove('menu-tab__menu-item_select_now')
+                allTabContentInCurrentTab[index].classList.add('data-tab__tab-item_not_visible')
+                if(allMenuTabInCurrentTab[index].classList.contains('menu-tab__menu-item_select_now'))
+                    allMenuTabInCurrentTab[index].classList.remove('menu-tab__menu-item_select_now')
             }
             
         }
     }
-    let allElementsTabContent = document.querySelectorAll('.main-content')   
-    for (let index = 0; index < allElementsTabContent.length; index++) {
-        allElementsTabInContent = allElementsTabContent[index].querySelectorAll('.menu-tab__menu-item');
-        for (let j_index = 0; j_index < allElementsTabInContent.length; j_index++) {
-            allElementsTabInContent[j_index].addEventListener('click',()=>open_new_tab(index,j_index))
+    
+    for (let index = 0; index < allTabElement.length; index++) {
+
+        let allTabItemInTabElement = allTabElement[index].querySelectorAll('.menu-tab__menu-item'); // получаю все таб-меню для каждого таба
+        let tmpArrForViewTabItem = []  // массив для создания элементов массива для отслеживания просмотра всех вкладок
+
+        for (let j_index = 0; j_index < allTabItemInTabElement.length; j_index++) { // пробегаюсь по всем там-меню каждого таб-контента
+            allTabItemInTabElement[j_index].addEventListener('click',()=>open_new_tab(index,j_index))
+            tmpArrForViewTabItem.push(false);
         }
+        tmpArrForViewTabItem[0] = true
+        checkClickTabInAllContent.push(tmpArrForViewTabItem)
     }
-})
+}
+
+
+document.addEventListener('DOMContentLoaded',start_script_tab)
