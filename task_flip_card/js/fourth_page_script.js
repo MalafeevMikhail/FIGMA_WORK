@@ -3,6 +3,7 @@ function start_script_flipCard(){
     var CheckViewAllCard = [];
 
     for (let index = 0; index < allElementsCardContent.length; index++) {
+
         function flip_open(indexFlipCardItem)
         {
             CheckViewAllCard[index][indexFlipCardItem] = true
@@ -19,8 +20,8 @@ function start_script_flipCard(){
             allElementsCardContent[index].querySelectorAll('.main-content__card-back-content')[indexFlipCardItem].style.transform = "rotateY(180deg)"
         }
 
-        allElementCardInCurrentMenu = allElementsCardContent[index].querySelectorAll('.main-content__card')
-        CountCardCardInCurrentContent = allElementsCardContent[index].querySelectorAll('.main-content__card').length
+        let allElementCardInCurrentMenu = allElementsCardContent[index].querySelectorAll('.main-content__card')
+        let CountCardCardInCurrentContent = allElementsCardContent[index].querySelectorAll('.main-content__card').length
         CheckViewAllCard.push(Array(CountCardCardInCurrentContent).fill(false))
         for (let j_index = 0; j_index < allElementCardInCurrentMenu.length; j_index++) {
             allElementCardInCurrentMenu[j_index].addEventListener('mouseover',()=>flip_open(j_index))
